@@ -69,7 +69,7 @@ str(train.pml[1:10])
 # Extract training data column namess without NA or empty values
 
 idx=apply(train.pml,2,function(x) sum(is.na(x)|x=="")) #Extracting NA Nos per column
-names.notna=names(train.pml[idx/nrow(train.pml)<=0.7]) #Extracting col names with more than 70% NA and/or spaces
+names.notna=names(train.pml[idx/nrow(train.pml)<=0.7]) #Extracting col names without more than 70% NA and/or spaces
 
 # Tidy the training dataset
 

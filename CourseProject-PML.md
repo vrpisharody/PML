@@ -3,7 +3,7 @@
 
 ###Introduction :
 
-This study aims at using data collected by the quantified self movement - a group of enthusiasts who take measurements about themselves regularly to improve their health, to find patterns in their behavior, or because they are tech geeks - to predict the quality of execise movements. This prediction algorithm is then intended to be used to provide feedback to exercisers about the quality of their movement in order to reduce the risk of injuries due to wrong movements. The data is collected from accelerometers on the belt, forearm, arm, and dumbell of 6 participants. They were asked to perform barbell lifts correctly and incorrectly in 5 different ways. More information is available from the website link, [WLE](http://groupware.les.inf.puc-rio.br/har#weight_lifting_exercises).
+This study aims at using data on activity monitors collected by the quantified self movement to predict activity quality of execise movements. Quantitfied Self Movement are a group of enthusiasts who take measurements about themselves regularly to improve their health, to find patterns in their behavior, or because they are tech geeks. This prediction algorithm is then intended to be used to provide feedback to exercisers about the quality of their movement in order to reduce the risk of injuries due to wrong movements. The data is collected from accelerometers on the belt, forearm, arm, and dumbell of 6 participants. They were asked to perform barbell lifts correctly and incorrectly in 5 different ways. More information is available from the website link, [WLE](http://groupware.les.inf.puc-rio.br/har#weight_lifting_exercises).
 
 ###Loading and Processing the Data:
 
@@ -69,7 +69,7 @@ str(train.pml[1:10])
 # Extract training data column namess without NA or empty values
 
 idx=apply(train.pml,2,function(x) sum(is.na(x)|x=="")) #Extracting NA Nos per column
-names.notna=names(train.pml[idx/nrow(train.pml)<=0.7]) #Extracting col names with more than 70% NA an/or spaces
+names.notna=names(train.pml[idx/nrow(train.pml)<=0.7]) #Extracting col names with more than 70% NA and/or spaces
 
 # Tidy the training dataset
 
@@ -85,7 +85,7 @@ train.pml=train.pml[intrain,] #training dataset
 
 ###Modelling Data & Predicting :
 
-Randomforest has been acknowledged to provide the best accuracy for modelling classifiers, so I will be  using Randomforest for modelling this data set. In order to improve processing speed, have a generalized solution and to be adequately accurate for the required test predictions, number of trees, **ntree=5**, is used.
+Randomforest has been acknowledged to provide the best accuracy for modelling classifiers, so I will be  using Randomforest for modelling this data set. In order to improve processing speed, have a generalized solution and to be adequately accurate for the required test predictions, number of trees, **ntree=100**, is used.
 
 
 
@@ -95,16 +95,16 @@ library(randomForest)
 set.seed(2014) #set seed to improve reporducibility
 
 # Set the random forest model with training and cross validation data
-modrf.pml=randomForest(factor(classe)~.,data=train.pml,ntree=5,keep.forest=T,xtest=cv.pml[-53],ytest=factor(cv.pml$classe))
+modrf.pml=randomForest(factor(classe)~.,data=train.pml,ntree=ntree,keep.forest=T,xtest=cv.pml[-53],ytest=factor(cv.pml$classe))
 ```
 
 #####In-Sample Error Rate :
 
-Is the error rate for the predictions for ***input data (training data)*** to the model. It is  **0.0887**, (***mean(modrf.pml$err.rate)***).
+Is the error rate for the predictions for ***input data (training data)*** to the model. It is  **0.015**, (***mean(modrf.pml$err.rate)***).
 
 #####Out Of Sample Error Rate :
 
-The expected out of sample error will be the error rate for predictions on the cross validated data provided to the model. It is **0.0572**, (***mean(modrf.pml\$test\$err.rate)***).
+The expected out of sample error will be the error rate for predictions on the cross validated data provided to the model. It is **0.0084**, (***mean(modrf.pml\$test\$err.rate)***).
 
 #####Prediction for test data:
 

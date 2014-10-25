@@ -96,7 +96,7 @@ There is a certain element of randomness to randomforest, hence, hardware, opera
 **answer=c("B","A","B","A","A","E","D","B","A","A","B","C","B","A","E","E","A","B","B","B")**
 
 ```{r}
-plot(modrf.pml,main="PML- Random Forest Model")
+plot(modrf.pml,main="PML- Random Forest Model",sub="Fig 1")
 ```
 
 

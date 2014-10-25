@@ -121,7 +121,7 @@ There is a certain element of randomness to randomforest, hence, hardware, opera
 
 
 ```r
-plot(modrf.pml,main="PML- Random Forest Model")
+plot(modrf.pml,main="PML- Random Forest Model",sub="Fig 1")
 ```
 
 ![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7.png) 

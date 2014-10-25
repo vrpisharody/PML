@@ -100,11 +100,11 @@ modrf.pml=randomForest(factor(classe)~.,data=train.pml,ntree=ntree,keep.forest=T
 
 #####In-Sample Error Rate :
 
-Is the error rate for the predictions for ***input data (training data)*** to the model. It is  **0.015**, (***mean(modrf.pml$err.rate)***).
+Is the error rate for the predictions for ***input data (training data)*** to the model. OOB error rate is  **0.015**, (***mean(modrf.pml$err.rate)***). The in-sample error rate is **0**
 
 #####Out Of Sample Error Rate :
 
-The expected out of sample error will be the error rate for predictions on the cross validated data provided to the model. It is **0.0084**, (***mean(modrf.pml\$test\$err.rate)***).
+Out of sample error will be the error rate for predictions on the cross validated data provided to the model. It is normally higher than the in-sample error rate and is **0.0084**, (***mean(modrf.pml\$test\$err.rate)***).
 
 #####Prediction for test data:
 
@@ -115,7 +115,7 @@ Prediction for the test data is provided by:
 answer=predict(modrf.pml,test.pml)
 ```
 
-There is a certain element of randomness to randomforest, hence, hardware, operating system and time of use may effect the final answer. **Fig 1**, below shows that increasing the number of trees improves accuracy, so increasing the number of trees, **ntree** would improve the accuracy of predictions. Use the following answer key to check your output.
+There is a certain element of randomness to randomforest, hence, hardware, operating system and time of use may effect the final answer. **Fig 1**, below shows that increasing the number of trees improves accuracy, so increasing the number of trees, **ntree** would improve the accuracy of predictions. From **Fig 1**, it is apparent that error rates improve slowly for trees beyond about 50. Use the following answer key to check your output.
 
 **answer=c("B","A","B","A","A","E","D","B","A","A","B","C","B","A","E","E","A","B","B","B")**
 

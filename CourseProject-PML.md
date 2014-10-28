@@ -104,7 +104,7 @@ Is the error rate for the predictions for ***input data (training data)*** to th
 
 #####Out Of Sample Error Rate :
 
-Out of sample error will be the error rate for predictions on the cross validated data provided to the model. It is normally higher than the in-sample error rate and is **0.0084**, (***mean(modrf.pml\$test\$err.rate)***).
+Out of sample error will be the error rate for predictions on the cross validated data provided to the model. It is normally higher than the in-sample error rate and is **0.008**, (***mean(modrf.pml\$test\$err.rate)***).
 
 #####Prediction for test data:
 
@@ -124,7 +124,7 @@ There is a certain element of randomness to randomforest, hence, hardware, opera
 plot(modrf.pml,main="PML- Random Forest Model",sub="Fig 1")
 ```
 
-![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7.png) 
+![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7-1.png) 
 
 
 

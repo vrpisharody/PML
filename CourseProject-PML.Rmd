@@ -77,11 +77,11 @@ modrf.pml=randomForest(factor(classe)~.,data=train.pml,ntree=ntree,keep.forest=T
 
 #####In-Sample Error Rate :
 
-Is the error rate for the predictions for ***input data (training data)*** to the model. OOB error rate is  **`r mean(modrf.pml$err.rate)`**, (***mean(modrf.pml$err.rate)***). The in-sample error rate is **`r 1-sum(predict(modrf.pml,train.pml)==train.pml$classe)/nrow(train.pml)`**
+Is the error rate for the predictions for ***input data (training data)*** to the model. OOB error rate is  **`r round(mean(modrf.pml$err.rate),3)`**, (***mean(modrf.pml$err.rate)***). The in-sample error rate is **`r 1-sum(predict(modrf.pml,train.pml)==train.pml$classe)/nrow(train.pml)`**
 
 #####Out Of Sample Error Rate :
 
-Out of sample error will be the error rate for predictions on the cross validated data provided to the model. It is normally higher than the in-sample error rate and is **`r mean(modrf.pml$test$err.rate)`**, (***mean(modrf.pml\$test\$err.rate)***).
+Out of sample error will be the error rate for predictions on the cross validated data provided to the model. It is normally higher than the in-sample error rate and is **`r round(mean(modrf.pml$test$err.rate),3)`**, (***mean(modrf.pml\$test\$err.rate)***).
 
 #####Prediction for test data:
 
